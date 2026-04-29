@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vinculación CACES</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page-shell">
+    <section class="register-card" aria-labelledby="page-title">
+      <div class="card-accent"></div>
+
+      <header class="hero">
+        <div class="hero-top">
+          <span class="hero-badge">Proceso institucional</span>
+          <img class="hero-logo" src="logo_suda.jpeg" alt="Logo del Instituto Sudamericano">
+        </div>
+        <h1 id="page-title">Vinculación CACES</h1>
+        <p class="hero-subtitle">
+          Registro de estudiantes para procesos de vinculación institucional
+        </p>
+      </header>
+
+      <section class="benefits" aria-label="Beneficios del registro">
+        <article class="benefit-item">
+          <span class="benefit-icon">01</span>
+          <div>
+            <h2>Registro rápido</h2>
+            <p>Formulario ágil para completar el proceso en pocos minutos.</p>
+          </div>
+        </article>
+        <article class="benefit-item">
+          <span class="benefit-icon">02</span>
+          <div>
+            <h2>Información segura</h2>
+            <p>Los datos se almacenan de forma estructurada en Supabase.</p>
+          </div>
+        </article>
+        <article class="benefit-item">
+          <span class="benefit-icon">03</span>
+          <div>
+            <h2>Gestión institucional</h2>
+            <p>Facilita el seguimiento académico y administrativo.</p>
+          </div>
+        </article>
+      </section>
+
+      <form id="registroForm" class="form-grid" novalidate>
+        <div class="field-group">
+          <label for="nombres">Nombres</label>
+          <input id="nombres" name="nombres" type="text" required placeholder="Ingresa tus nombres">
+        </div>
+
+        <div class="field-group">
+          <label for="apellidos">Apellidos</label>
+          <input id="apellidos" name="apellidos" type="text" required placeholder="Ingresa tus apellidos">
+        </div>
+
+        <div class="field-group">
+          <label for="cedula">Número de cédula</label>
+          <input id="cedula" name="cedula" type="text" inputmode="numeric" maxlength="10" required placeholder="Ej. 0123456789">
+        </div>
+
+        <div class="field-group">
+          <label for="correo">Correo institucional</label>
+          <input id="correo" name="correo" type="email" required placeholder="usuario@institucion.edu.ec">
+        </div>
+
+        <div class="field-group">
+          <label for="carrera">Carrera</label>
+          <select id="carrera" name="carrera" required>
+            <option value="">Selecciona una carrera</option>
+            <option value="Desarrollo de Software">Desarrollo de Software</option>
+            <option value="Redes y Telecomunicaciones">Redes y Telecomunicaciones</option>
+          </select>
+        </div>
+
+        <div class="field-group">
+          <label for="seccion">Sección</label>
+          <select id="seccion" name="seccion" required>
+            <option value="">Selecciona una sección</option>
+            <option value="Matutina">Matutina</option>
+            <option value="Nocturna">Nocturna</option>
+          </select>
+        </div>
+
+        <div class="field-group">
+          <label for="telefono">Teléfono</label>
+          <input id="telefono" name="telefono" type="text" inputmode="numeric" maxlength="10" required placeholder="Ej. 0987654321">
+        </div>
+
+        <div class="field-group field-full">
+          <label for="observacion">Observación</label>
+          <textarea
+            id="observacion"
+            name="observacion"
+            rows="4"
+            placeholder="Escribe una observación si es necesario"
+          ></textarea>
+        </div>
+
+        <div class="form-actions field-full">
+          <button id="submitButton" type="submit">Registrar estudiante</button>
+          <p id="formMessage" class="form-message" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="page-footer">
+    Instituto Superior Tecnológico Sudamericano - Vinculación CACES
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="script.js"></script>
+</body>
+</html>
