@@ -20,6 +20,12 @@ const supabaseClient =
     ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
     : null;
 
+const statsState = {
+  total: 0,
+  software: 0,
+  redes: 0,
+};
+
 function showMessage(message, type) {
   formMessage.textContent = message;
   formMessage.className = `form-message ${type}`;
@@ -36,6 +42,59 @@ function isValidEmail(email) {
 
 function sanitizeNumber(value) {
   return value.replace(/\D/g, "");
+}
+
+function parseCountValue(value) {
+  const parsed = Number.parseInt(value, 10);
+  return Number.isFinite(parsed) ? parsed : 0;
+}
+
+function renderStats() {
+  if (totalCount) totalCount.textContent = String(statsState.total);
+  if (softwareCount) softwareCount.textContent = String(statsState.software);
+  if (redesCount) redesCount.textContent = String(statsState.redes);
+}
+
+function pulseStats() {
+  if (statsMainCard) {
+    statsMainCard.classList.add("pulse");
+    setTimeout(() => statsMainCard.classList.remove("pulse"), 700);
+  }
+
+  statsCareerCards.forEach((card) => {
+    card.classList.add("pulse");
+    setTimeout(() => card.classList.remove("pulse"), 700);
+  });
+}
+
+function syncLocalStatsFromDom() {
+  statsState.total = parseCountValue(totalCount?.textContent ?? "0");
+  statsState.software = parseCountValue(softwareCount?.textContent ?? "0");
+  statsState.redes = parseCountValue(redesCount?.textContent ?? "0");
+}
+
+function mergeRemoteStats(remoteStats) {
+  statsState.total = Math.max(statsState.total, remoteStats.total);
+  statsState.software = Math.max(statsState.software, remoteStats.software);
+  statsState.redes = Math.max(statsState.redes, remoteStats.redes);
+  renderStats();
+}
+
+function incrementLocalStats(carrera) {
+  syncLocalStatsFromDom();
+
+  statsState.total += 1;
+
+  if (carrera === "Desarrollo de Software") {
+    statsState.software += 1;
+  }
+
+  if (carrera === "Redes y Telecomunicaciones") {
+    statsState.redes += 1;
+  }
+
+  renderStats();
+  pulseStats();
 }
 
 function setSection(value) {
@@ -110,23 +169,15 @@ async function fetchRegistrationCount() {
     if (softwareResponse.error) throw softwareResponse.error;
     if (redesResponse.error) throw redesResponse.error;
 
-    totalCount.textContent = String(totalResponse.count ?? 0);
-    softwareCount.textContent = String(softwareResponse.count ?? 0);
-    redesCount.textContent = String(redesResponse.count ?? 0);
-
-    if (statsMainCard) {
-      statsMainCard.classList.add("pulse");
-      setTimeout(() => statsMainCard.classList.remove("pulse"), 700);
-    }
-
-    statsCareerCards.forEach((card) => {
-      card.classList.add("pulse");
-      setTimeout(() => card.classList.remove("pulse"), 700);
+    mergeRemoteStats({
+      total: totalResponse.count ?? 0,
+      software: softwareResponse.count ?? 0,
+      redes: redesResponse.count ?? 0,
     });
+
+    pulseStats();
   } catch (error) {
-    totalCount.textContent = "—";
-    softwareCount.textContent = "—";
-    redesCount.textContent = "—";
+    renderStats();
   }
 }
 
@@ -180,6 +231,7 @@ async function handleSubmit(event) {
       throw error;
     }
 
+    incrementLocalStats(payload.carrera);
     form.reset();
     resetSection();
     showMessage("Registro guardado correctamente.", "success");
