@@ -4,8 +4,11 @@ const SUPABASE_ANON_KEY = "sb_publishable_eoxg6aDpuvrVDfCws3euag_LwPZ1maX";
 const form = document.getElementById("registroForm");
 const submitButton = document.getElementById("submitButton");
 const formMessage = document.getElementById("formMessage");
-const liveCount = document.getElementById("liveCount");
-const livePanel = document.querySelector(".live-panel");
+const totalCount = document.getElementById("totalCount");
+const softwareCount = document.getElementById("softwareCount");
+const redesCount = document.getElementById("redesCount");
+const statsMainCard = document.querySelector(".stats-main-card");
+const statsCareerCards = document.querySelectorAll(".career-card");
 const cedulaInput = document.getElementById("cedula");
 const telefonoInput = document.getElementById("telefono");
 const seccionInput = document.getElementById("seccion");
@@ -80,27 +83,50 @@ function validateForm(data) {
 }
 
 async function fetchRegistrationCount() {
-  if (!supabaseClient || !liveCount) {
+  if (!supabaseClient || !totalCount || !softwareCount || !redesCount) {
     return;
   }
 
   try {
-    const { count, error } = await supabaseClient
-      .from("registros_vinculacion_caces")
-      .select("*", { count: "exact", head: true });
+    const [
+      totalResponse,
+      softwareResponse,
+      redesResponse,
+    ] = await Promise.all([
+      supabaseClient
+        .from("registros_vinculacion_caces")
+        .select("*", { count: "exact", head: true }),
+      supabaseClient
+        .from("registros_vinculacion_caces")
+        .select("*", { count: "exact", head: true })
+        .eq("carrera", "Desarrollo de Software"),
+      supabaseClient
+        .from("registros_vinculacion_caces")
+        .select("*", { count: "exact", head: true })
+        .eq("carrera", "Redes y Telecomunicaciones"),
+    ]);
 
-    if (error) {
-      throw error;
+    if (totalResponse.error) throw totalResponse.error;
+    if (softwareResponse.error) throw softwareResponse.error;
+    if (redesResponse.error) throw redesResponse.error;
+
+    totalCount.textContent = String(totalResponse.count ?? 0);
+    softwareCount.textContent = String(softwareResponse.count ?? 0);
+    redesCount.textContent = String(redesResponse.count ?? 0);
+
+    if (statsMainCard) {
+      statsMainCard.classList.add("pulse");
+      setTimeout(() => statsMainCard.classList.remove("pulse"), 700);
     }
 
-    liveCount.textContent = String(count ?? 0);
-
-    if (livePanel) {
-      livePanel.classList.add("pulse");
-      setTimeout(() => livePanel.classList.remove("pulse"), 700);
-    }
+    statsCareerCards.forEach((card) => {
+      card.classList.add("pulse");
+      setTimeout(() => card.classList.remove("pulse"), 700);
+    });
   } catch (error) {
-    liveCount.textContent = "Activo";
+    totalCount.textContent = "—";
+    softwareCount.textContent = "—";
+    redesCount.textContent = "—";
   }
 }
 
@@ -181,3 +207,4 @@ sectionButtons.forEach((button) => {
 
 form.addEventListener("submit", handleSubmit);
 fetchRegistrationCount();
+setInterval(fetchRegistrationCount, 15000);

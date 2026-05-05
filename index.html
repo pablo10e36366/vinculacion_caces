@@ -3,188 +3,253 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vinculación CACES</title>
+  <title>Vinculacion CACES</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="site-bg"></div>
+  <div class="page-background"></div>
+  <div class="page-grid"></div>
 
   <header class="topbar">
     <a class="brand" href="#inicio">
-      <img class="brand-logo" src="logo_suda.jpeg" alt="Logo del Instituto Sudamericano">
+      <span class="brand-mark">
+        <img src="logo_suda.jpeg" alt="Logo Instituto Sudamericano">
+      </span>
       <span class="brand-copy">
         <strong>Instituto Sudamericano</strong>
-        <small>Vinculación CACES</small>
+        <small>Vinculacion CACES</small>
       </span>
     </a>
 
-    <nav class="topbar-nav" aria-label="Navegación principal">
-      <a href="#inicio">Inicio</a>
-      <a href="#perfil">Perfil</a>
-      <a href="#registro">Registro</a>
-    </nav>
-
-    <a class="topbar-cta" href="#registro">Registrarse</a>
+    <a class="register-link" href="#registro">Registrarse</a>
   </header>
 
   <main>
     <section id="inicio" class="hero-section">
-      <div class="hero-overlay hero-grid"></div>
-      <div class="hero-overlay hero-noise"></div>
-      <div class="hero-glow"></div>
+      <div class="hero-photo"></div>
+      <div class="hero-shadow"></div>
 
-      <div class="hero-content">
-        <div class="hero-chip">
-          <span class="hero-chip-dot"></span>
-          Instituto Sudamericano · Proyecto institucional
+      <div class="hero-inner">
+        <div class="section-chip">
+          <span class="chip-dot"></span>
+          Instituto Sudamericano · Proyecto de vinculacion
         </div>
 
-        <div class="hero-heading">
-          <div class="hero-copy">
-            <h1>Vinculación <span>CACES</span></h1>
-            <h2>Registro de estudiantes para procesos de vinculación institucional</h2>
-            <p>
-              Plataforma de inscripción para estudiantes que participarán en actividades
-              de apoyo, seguimiento y fortalecimiento de calidad institucional.
-            </p>
-          </div>
+        <h1>Vinculacion <span>CACES</span></h1>
+        <h2>Impulsando la Calidad Academica</h2>
+        <p class="hero-description">
+          El Consejo para el Aseguramiento de la Calidad de la Educacion Superior
+          evalua y certifica la excelencia en instituciones academicas. Este proyecto
+          conecta a los estudiantes con los procesos de fortalecimiento institucional.
+        </p>
 
-          <div class="hero-emblem">
-            <img src="logo_suda.jpeg" alt="Logo del Instituto Sudamericano">
-          </div>
-        </div>
+        <section class="stats-panel" aria-label="Contadores de registros">
+          <div class="stats-live-badge">En vivo</div>
 
-        <div class="live-panel" aria-live="polite">
-          <div class="live-badge">En vivo</div>
-          <div class="live-icon">◎</div>
-          <div class="live-copy">
-            <strong id="liveCount">Activo</strong>
-            <span>sistema conectado para registro en Supabase</span>
+          <article class="stats-main-card">
+            <div class="stats-main-icon">◉</div>
+            <div class="stats-main-copy">
+              <strong id="totalCount">0</strong>
+              <span>registros totales</span>
+              <small>Personas inscritas · actualiza segun nuevos registros</small>
+            </div>
+          </article>
+
+          <div class="career-stats">
+            <article class="career-card">
+              <span class="career-label">Desarrollo de Software</span>
+              <strong id="softwareCount">0</strong>
+            </article>
+            <article class="career-card">
+              <span class="career-label">Redes y Telecomunicaciones</span>
+              <strong id="redesCount">0</strong>
+            </article>
           </div>
-        </div>
+        </section>
 
         <div class="hero-actions">
           <a class="primary-button" href="#registro">Unirme al proyecto</a>
-          <a class="secondary-button" href="#perfil">Ver perfil requerido</a>
         </div>
+
+        <a class="scroll-link" href="#perfil">Scroll</a>
       </div>
     </section>
 
     <div class="section-divider"></div>
 
-    <section id="perfil" class="info-section">
-      <div class="section-label">// módulo_02 · perfil</div>
-      <h2>Requisitos y beneficios</h2>
-      <p class="section-intro">
-        La participación está orientada a estudiantes con interés en procesos
-        institucionales, compromiso académico y disposición para colaborar.
-      </p>
+    <section id="perfil" class="requirements-section">
+      <div class="section-heading">
+        <div class="section-kicker">// modulo_02 · perfil</div>
+        <h2>Requisitos & <span>Habilidades</span></h2>
+        <p>Lo que necesitas para unirte y lo que ganaras al participar.</p>
+      </div>
 
-      <div class="info-grid">
-        <article class="info-card">
-          <span class="info-tag">REQ_01</span>
-          <div class="info-icon">01</div>
-          <h3>Registro rápido</h3>
-          <p>Formulario ágil con validaciones para completar el proceso sin pasos innecesarios.</p>
-        </article>
+      <div class="requirements-grid">
+        <div class="requirements-column">
+          <div class="column-title">→ Requisitos de ingreso</div>
 
-        <article class="info-card">
-          <span class="info-tag">REQ_02</span>
-          <div class="info-icon">02</div>
-          <h3>Información segura</h3>
-          <p>Los datos se almacenan separados por columnas en Supabase para una gestión ordenada.</p>
-        </article>
+          <article class="requirement-card">
+            <div class="requirement-icon">👤</div>
+            <div class="requirement-copy">
+              <h3>Estudiante Regular</h3>
+              <p>Estar inscrito y al dia en el sistema academico del Instituto Sudamericano.</p>
+            </div>
+            <span class="requirement-tag">REQ_01</span>
+          </article>
 
-        <article class="info-card">
-          <span class="info-tag">REQ_03</span>
-          <div class="info-icon">03</div>
-          <h3>Gestión institucional</h3>
-          <p>Facilita seguimiento, control y participación dentro del proceso de Vinculación CACES.</p>
-        </article>
+          <article class="requirement-card">
+            <div class="requirement-icon">✓</div>
+            <div class="requirement-copy">
+              <h3>Interes en Calidad</h3>
+              <p>Disposicion para aprender sobre procesos de evaluacion y aseguramiento institucional.</p>
+            </div>
+            <span class="requirement-tag">REQ_02</span>
+          </article>
+
+          <article class="requirement-card">
+            <div class="requirement-icon">🕒</div>
+            <div class="requirement-copy">
+              <h3>Disponibilidad de Turno</h3>
+              <p>Participacion en jornadas matutinas o nocturnas segun el cronograma del proyecto.</p>
+            </div>
+            <span class="requirement-tag">REQ_03</span>
+          </article>
+        </div>
+
+        <div class="skills-column">
+          <div class="column-title column-title-cyan">→ Habilidades que adquirirás</div>
+
+          <div class="skills-terminal">
+            <div class="terminal-bar">
+              <span class="terminal-dot dot-red"></span>
+              <span class="terminal-dot dot-yellow"></span>
+              <span class="terminal-dot dot-green"></span>
+              <span class="terminal-title">skill_tree.exe — CACES v2026</span>
+            </div>
+
+            <div class="terminal-line">$ loading skills --module vinculacion...</div>
+
+            <div class="skill-row">
+              <div class="skill-head">
+                <span>Documentacion Tecnica</span>
+                <strong>90%</strong>
+              </div>
+              <div class="skill-track"><span class="skill-fill fill-purple" style="width: 90%"></span></div>
+            </div>
+
+            <div class="skill-row">
+              <div class="skill-head">
+                <span>Auditoria de Procesos</span>
+                <strong>75%</strong>
+              </div>
+              <div class="skill-track"><span class="skill-fill fill-cyan" style="width: 75%"></span></div>
+            </div>
+
+            <div class="skill-row">
+              <div class="skill-head">
+                <span>Trabajo en Equipo</span>
+                <strong>95%</strong>
+              </div>
+              <div class="skill-track"><span class="skill-fill fill-soft" style="width: 95%"></span></div>
+            </div>
+
+            <div class="skill-row">
+              <div class="skill-head">
+                <span>Liderazgo Profesional</span>
+                <strong>80%</strong>
+              </div>
+              <div class="skill-track"><span class="skill-fill fill-violet" style="width: 80%"></span></div>
+            </div>
+
+            <div class="terminal-footer">● Todas las habilidades desbloqueables al completar el proyecto.</div>
+          </div>
+
+          <div class="badge-row">
+            <span class="info-badge">Certificado CACES</span>
+            <span class="info-badge">Horas de Vinculacion</span>
+            <span class="info-badge">Reconocimiento Institucional</span>
+          </div>
+        </div>
       </div>
     </section>
 
     <div class="section-divider"></div>
 
     <section id="registro" class="form-section">
-      <div class="section-label">// módulo_03 · registro</div>
-      <h2>Únete al proyecto</h2>
-      <p class="section-intro">
-        Completa el formulario con tus datos reales. El registro se almacena directamente
-        en Supabase.
-      </p>
+      <div class="section-heading">
+        <div class="section-kicker">// modulo_03 · registro</div>
+        <h2>Unete al <span>Proyecto</span></h2>
+        <p>Completa el formulario y forma parte de la Vinculacion CACES.</p>
+      </div>
 
-      <div class="form-card">
-        <div class="form-accent"></div>
+      <div class="form-shell">
+        <div class="form-top-gradient"></div>
 
-        <form id="registroForm" class="form-grid" novalidate>
-          <div class="field-group">
+        <form id="registroForm" class="form-layout" novalidate>
+          <div class="field-group field-full">
             <label for="nombres">Nombres</label>
-            <input id="nombres" name="nombres" type="text" required placeholder="Ingresa tus nombres">
+            <input id="nombres" name="nombres" type="text" required placeholder="Ej. Juan">
           </div>
 
-          <div class="field-group">
+          <div class="field-group field-full">
             <label for="apellidos">Apellidos</label>
-            <input id="apellidos" name="apellidos" type="text" required placeholder="Ingresa tus apellidos">
+            <input id="apellidos" name="apellidos" type="text" required placeholder="Ej. Perez">
           </div>
 
           <div class="field-group">
-            <label for="cedula">Número de cédula</label>
+            <label for="cedula">Cedula</label>
             <input id="cedula" name="cedula" type="text" inputmode="numeric" maxlength="10" required placeholder="Ej. 0123456789">
           </div>
 
           <div class="field-group">
-            <label for="correo">Correo institucional</label>
-            <input id="correo" name="correo" type="email" required placeholder="usuario@institucion.edu.ec">
+            <label for="telefono">Telefono</label>
+            <input id="telefono" name="telefono" type="text" inputmode="numeric" maxlength="10" required placeholder="Ej. 0999999999">
           </div>
 
-          <div class="field-group">
+          <div class="field-group field-full">
+            <label for="correo">Correo institucional</label>
+            <input id="correo" name="correo" type="email" required placeholder="Ej. estudiante@institucion.edu.ec">
+          </div>
+
+          <div class="field-group field-full">
             <label for="carrera">Carrera</label>
             <select id="carrera" name="carrera" required>
-              <option value="">Selecciona una carrera</option>
+              <option value="">Selecciona tu carrera...</option>
               <option value="Desarrollo de Software">Desarrollo de Software</option>
               <option value="Redes y Telecomunicaciones">Redes y Telecomunicaciones</option>
             </select>
           </div>
 
-          <div class="field-group">
-            <label>Sección</label>
+          <div class="field-group field-full">
+            <label>Seccion</label>
             <input id="seccion" name="seccion" type="hidden" value="">
-            <div class="toggle-group" role="group" aria-label="Selecciona una sección">
+            <div class="toggle-group" role="group" aria-label="Selecciona una seccion">
               <button class="toggle-option" type="button" data-section="Matutina">Matutina</button>
               <button class="toggle-option" type="button" data-section="Nocturna">Nocturna</button>
             </div>
           </div>
 
-          <div class="field-group">
-            <label for="telefono">Teléfono</label>
-            <input id="telefono" name="telefono" type="text" inputmode="numeric" maxlength="10" required placeholder="Ej. 0987654321">
-          </div>
-
           <div class="field-group field-full">
-            <label for="observacion">Observación</label>
-            <textarea
-              id="observacion"
-              name="observacion"
-              rows="4"
-              placeholder="Escribe una observación si es necesario"
-            ></textarea>
+            <label for="observacion">Observacion</label>
+            <textarea id="observacion" name="observacion" rows="4" placeholder="Escribe una observacion si es necesario"></textarea>
           </div>
 
           <div class="form-actions field-full">
-            <button id="submitButton" class="primary-button submit-button" type="submit">Registrar estudiante</button>
+            <button id="submitButton" class="submit-button" type="submit">Unirme al proyecto</button>
             <p id="formMessage" class="form-message" role="status" aria-live="polite"></p>
           </div>
         </form>
+
+        <p class="form-footer-copy">Instituto Sudamericano · Vinculacion CACES · 2026</p>
       </div>
     </section>
   </main>
 
   <footer class="page-footer">
-    Instituto Superior Tecnológico Sudamericano - Vinculación CACES
+    Instituto Superior Tecnologico Sudamericano - Vinculacion CACES
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
