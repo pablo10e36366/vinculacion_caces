@@ -4,6 +4,12 @@ const SUPABASE_ANON_KEY = "sb_publishable_eoxg6aDpuvrVDfCws3euag_LwPZ1maX";
 const form = document.getElementById("registroForm");
 const submitButton = document.getElementById("submitButton");
 const formMessage = document.getElementById("formMessage");
+const liveCount = document.getElementById("liveCount");
+const livePanel = document.querySelector(".live-panel");
+const cedulaInput = document.getElementById("cedula");
+const telefonoInput = document.getElementById("telefono");
+const seccionInput = document.getElementById("seccion");
+const sectionButtons = document.querySelectorAll(".toggle-option");
 
 const supabaseClient =
   SUPABASE_URL !== "AQUI_VA_MI_SUPABASE_URL" &&
@@ -27,6 +33,20 @@ function isValidEmail(email) {
 
 function sanitizeNumber(value) {
   return value.replace(/\D/g, "");
+}
+
+function setSection(value) {
+  seccionInput.value = value;
+
+  sectionButtons.forEach((button) => {
+    const isActive = button.dataset.section === value;
+    button.classList.toggle("active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
+  });
+}
+
+function resetSection() {
+  setSection("");
 }
 
 function validateForm(data) {
@@ -57,6 +77,31 @@ function validateForm(data) {
   }
 
   return null;
+}
+
+async function fetchRegistrationCount() {
+  if (!supabaseClient || !liveCount) {
+    return;
+  }
+
+  try {
+    const { count, error } = await supabaseClient
+      .from("registros_vinculacion_caces")
+      .select("*", { count: "exact", head: true });
+
+    if (error) {
+      throw error;
+    }
+
+    liveCount.textContent = String(count ?? 0);
+
+    if (livePanel) {
+      livePanel.classList.add("pulse");
+      setTimeout(() => livePanel.classList.remove("pulse"), 700);
+    }
+  } catch (error) {
+    liveCount.textContent = "Activo";
+  }
 }
 
 async function handleSubmit(event) {
@@ -110,7 +155,9 @@ async function handleSubmit(event) {
     }
 
     form.reset();
+    resetSection();
     showMessage("Registro guardado correctamente.", "success");
+    fetchRegistrationCount();
   } catch (error) {
     console.error("Error al guardar el registro:", error);
     showMessage("Error al guardar el registro.", "error");
@@ -120,4 +167,17 @@ async function handleSubmit(event) {
   }
 }
 
+sectionButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    setSection(button.dataset.section || "");
+  });
+});
+
+[cedulaInput, telefonoInput].forEach((input) => {
+  input.addEventListener("input", (event) => {
+    event.target.value = sanitizeNumber(event.target.value);
+  });
+});
+
 form.addEventListener("submit", handleSubmit);
+fetchRegistrationCount();

@@ -10,104 +10,176 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="page-shell">
-    <section class="register-card" aria-labelledby="page-title">
-      <div class="card-accent"></div>
+  <div class="site-bg"></div>
 
-      <header class="hero">
-        <div class="hero-top">
-          <span class="hero-badge">Proceso institucional</span>
-          <img class="hero-logo" src="logo_suda.jpeg" alt="Logo del Instituto Sudamericano">
+  <header class="topbar">
+    <a class="brand" href="#inicio">
+      <img class="brand-logo" src="logo_suda.jpeg" alt="Logo del Instituto Sudamericano">
+      <span class="brand-copy">
+        <strong>Instituto Sudamericano</strong>
+        <small>Vinculación CACES</small>
+      </span>
+    </a>
+
+    <nav class="topbar-nav" aria-label="Navegación principal">
+      <a href="#inicio">Inicio</a>
+      <a href="#perfil">Perfil</a>
+      <a href="#registro">Registro</a>
+    </nav>
+
+    <a class="topbar-cta" href="#registro">Registrarse</a>
+  </header>
+
+  <main>
+    <section id="inicio" class="hero-section">
+      <div class="hero-overlay hero-grid"></div>
+      <div class="hero-overlay hero-noise"></div>
+      <div class="hero-glow"></div>
+
+      <div class="hero-content">
+        <div class="hero-chip">
+          <span class="hero-chip-dot"></span>
+          Instituto Sudamericano · Proyecto institucional
         </div>
-        <h1 id="page-title">Vinculación CACES</h1>
-        <p class="hero-subtitle">
-          Registro de estudiantes para procesos de vinculación institucional
-        </p>
-      </header>
 
-      <section class="benefits" aria-label="Beneficios del registro">
-        <article class="benefit-item">
-          <span class="benefit-icon">01</span>
-          <div>
-            <h2>Registro rápido</h2>
-            <p>Formulario ágil para completar el proceso en pocos minutos.</p>
+        <div class="hero-heading">
+          <div class="hero-copy">
+            <h1>Vinculación <span>CACES</span></h1>
+            <h2>Registro de estudiantes para procesos de vinculación institucional</h2>
+            <p>
+              Plataforma de inscripción para estudiantes que participarán en actividades
+              de apoyo, seguimiento y fortalecimiento de calidad institucional.
+            </p>
           </div>
-        </article>
-        <article class="benefit-item">
-          <span class="benefit-icon">02</span>
-          <div>
-            <h2>Información segura</h2>
-            <p>Los datos se almacenan de forma estructurada en Supabase.</p>
+
+          <div class="hero-emblem">
+            <img src="logo_suda.jpeg" alt="Logo del Instituto Sudamericano">
           </div>
-        </article>
-        <article class="benefit-item">
-          <span class="benefit-icon">03</span>
-          <div>
-            <h2>Gestión institucional</h2>
-            <p>Facilita el seguimiento académico y administrativo.</p>
+        </div>
+
+        <div class="live-panel" aria-live="polite">
+          <div class="live-badge">En vivo</div>
+          <div class="live-icon">◎</div>
+          <div class="live-copy">
+            <strong id="liveCount">Activo</strong>
+            <span>sistema conectado para registro en Supabase</span>
           </div>
+        </div>
+
+        <div class="hero-actions">
+          <a class="primary-button" href="#registro">Unirme al proyecto</a>
+          <a class="secondary-button" href="#perfil">Ver perfil requerido</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section id="perfil" class="info-section">
+      <div class="section-label">// módulo_02 · perfil</div>
+      <h2>Requisitos y beneficios</h2>
+      <p class="section-intro">
+        La participación está orientada a estudiantes con interés en procesos
+        institucionales, compromiso académico y disposición para colaborar.
+      </p>
+
+      <div class="info-grid">
+        <article class="info-card">
+          <span class="info-tag">REQ_01</span>
+          <div class="info-icon">01</div>
+          <h3>Registro rápido</h3>
+          <p>Formulario ágil con validaciones para completar el proceso sin pasos innecesarios.</p>
         </article>
-      </section>
 
-      <form id="registroForm" class="form-grid" novalidate>
-        <div class="field-group">
-          <label for="nombres">Nombres</label>
-          <input id="nombres" name="nombres" type="text" required placeholder="Ingresa tus nombres">
-        </div>
+        <article class="info-card">
+          <span class="info-tag">REQ_02</span>
+          <div class="info-icon">02</div>
+          <h3>Información segura</h3>
+          <p>Los datos se almacenan separados por columnas en Supabase para una gestión ordenada.</p>
+        </article>
 
-        <div class="field-group">
-          <label for="apellidos">Apellidos</label>
-          <input id="apellidos" name="apellidos" type="text" required placeholder="Ingresa tus apellidos">
-        </div>
+        <article class="info-card">
+          <span class="info-tag">REQ_03</span>
+          <div class="info-icon">03</div>
+          <h3>Gestión institucional</h3>
+          <p>Facilita seguimiento, control y participación dentro del proceso de Vinculación CACES.</p>
+        </article>
+      </div>
+    </section>
 
-        <div class="field-group">
-          <label for="cedula">Número de cédula</label>
-          <input id="cedula" name="cedula" type="text" inputmode="numeric" maxlength="10" required placeholder="Ej. 0123456789">
-        </div>
+    <div class="section-divider"></div>
 
-        <div class="field-group">
-          <label for="correo">Correo institucional</label>
-          <input id="correo" name="correo" type="email" required placeholder="usuario@institucion.edu.ec">
-        </div>
+    <section id="registro" class="form-section">
+      <div class="section-label">// módulo_03 · registro</div>
+      <h2>Únete al proyecto</h2>
+      <p class="section-intro">
+        Completa el formulario con tus datos reales. El registro se almacena directamente
+        en Supabase.
+      </p>
 
-        <div class="field-group">
-          <label for="carrera">Carrera</label>
-          <select id="carrera" name="carrera" required>
-            <option value="">Selecciona una carrera</option>
-            <option value="Desarrollo de Software">Desarrollo de Software</option>
-            <option value="Redes y Telecomunicaciones">Redes y Telecomunicaciones</option>
-          </select>
-        </div>
+      <div class="form-card">
+        <div class="form-accent"></div>
 
-        <div class="field-group">
-          <label for="seccion">Sección</label>
-          <select id="seccion" name="seccion" required>
-            <option value="">Selecciona una sección</option>
-            <option value="Matutina">Matutina</option>
-            <option value="Nocturna">Nocturna</option>
-          </select>
-        </div>
+        <form id="registroForm" class="form-grid" novalidate>
+          <div class="field-group">
+            <label for="nombres">Nombres</label>
+            <input id="nombres" name="nombres" type="text" required placeholder="Ingresa tus nombres">
+          </div>
 
-        <div class="field-group">
-          <label for="telefono">Teléfono</label>
-          <input id="telefono" name="telefono" type="text" inputmode="numeric" maxlength="10" required placeholder="Ej. 0987654321">
-        </div>
+          <div class="field-group">
+            <label for="apellidos">Apellidos</label>
+            <input id="apellidos" name="apellidos" type="text" required placeholder="Ingresa tus apellidos">
+          </div>
 
-        <div class="field-group field-full">
-          <label for="observacion">Observación</label>
-          <textarea
-            id="observacion"
-            name="observacion"
-            rows="4"
-            placeholder="Escribe una observación si es necesario"
-          ></textarea>
-        </div>
+          <div class="field-group">
+            <label for="cedula">Número de cédula</label>
+            <input id="cedula" name="cedula" type="text" inputmode="numeric" maxlength="10" required placeholder="Ej. 0123456789">
+          </div>
 
-        <div class="form-actions field-full">
-          <button id="submitButton" type="submit">Registrar estudiante</button>
-          <p id="formMessage" class="form-message" role="status" aria-live="polite"></p>
-        </div>
-      </form>
+          <div class="field-group">
+            <label for="correo">Correo institucional</label>
+            <input id="correo" name="correo" type="email" required placeholder="usuario@institucion.edu.ec">
+          </div>
+
+          <div class="field-group">
+            <label for="carrera">Carrera</label>
+            <select id="carrera" name="carrera" required>
+              <option value="">Selecciona una carrera</option>
+              <option value="Desarrollo de Software">Desarrollo de Software</option>
+              <option value="Redes y Telecomunicaciones">Redes y Telecomunicaciones</option>
+            </select>
+          </div>
+
+          <div class="field-group">
+            <label>Sección</label>
+            <input id="seccion" name="seccion" type="hidden" value="">
+            <div class="toggle-group" role="group" aria-label="Selecciona una sección">
+              <button class="toggle-option" type="button" data-section="Matutina">Matutina</button>
+              <button class="toggle-option" type="button" data-section="Nocturna">Nocturna</button>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label for="telefono">Teléfono</label>
+            <input id="telefono" name="telefono" type="text" inputmode="numeric" maxlength="10" required placeholder="Ej. 0987654321">
+          </div>
+
+          <div class="field-group field-full">
+            <label for="observacion">Observación</label>
+            <textarea
+              id="observacion"
+              name="observacion"
+              rows="4"
+              placeholder="Escribe una observación si es necesario"
+            ></textarea>
+          </div>
+
+          <div class="form-actions field-full">
+            <button id="submitButton" class="primary-button submit-button" type="submit">Registrar estudiante</button>
+            <p id="formMessage" class="form-message" role="status" aria-live="polite"></p>
+          </div>
+        </form>
+      </div>
     </section>
   </main>
 
